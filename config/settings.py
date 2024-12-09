@@ -1,14 +1,19 @@
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
+
+# Загружаем .env файл
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-0lt!^dr%(94xmxqfcz7##=xtl#ioa(^ks9*51u_a!_18wln4_1"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -62,11 +67,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "torg",  # Имя базы данных
-        "USER": "postgres",  # Имя пользователя PostgreSQL
-        "PASSWORD": "12345",  # Пароль пользователя
-        "HOST": "localhost",  # Хост для PostgreSQL
-        "PORT": "5432",  # Порт для PostgreSQL
+        "NAME": os.getenv("DATABASE_NAME"),
+        "USER": os.getenv("DATABASE_USER"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
+        "HOST": os.getenv("DATABASE_HOST"),
+        "PORT": os.getenv("DATABASE_PORT"),
     }
 }
 
@@ -125,6 +130,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'konovalex@mail.ru'
-EMAIL_HOST_PASSWORD = 'secret'
-DEFAULT_FROM_EMAIL = 'konovalex@mail.ru'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
