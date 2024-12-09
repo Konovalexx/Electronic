@@ -18,8 +18,8 @@
 
 ### 1. Клонируйте репозиторий
 
-git clone https://github.com/yourusername/electronics-network.git
-cd electronics-network
+git clone https://github.com/Konovalexx/Electronic.git
+cd Electronic
 
 2. Создайте и активируйте виртуальное окружение
 python3 -m venv venv
