@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "rest_framework",  # Django Rest Framework
     'rest_framework_simplejwt',  # Для работы с JWT
     "django_filters",  # Django Filters для фильтрации
+    'drf_yasg',  # Добавлено для генерации документации API
 ]
 
 MIDDLEWARE = [
